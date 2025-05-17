@@ -1,10 +1,7 @@
 name: Provision Terraform Backend
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  
   workflow_dispatch:
     inputs:
       environment:
@@ -55,9 +52,12 @@ jobs:
         working-directory: ./provision-backend
         run: terraform plan
 
-        
       - name: terraform apply
         working-directory: ./provision-backend
         run: terraform apply -auto-approve
+
+      - name: terraform destroy
+        working-directory: ./provision-backend
+        run: terraform destroy -auto-approve
 
   
