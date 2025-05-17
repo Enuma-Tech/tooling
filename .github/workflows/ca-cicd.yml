@@ -50,8 +50,13 @@ jobs:
       - name: terraform init
         working-directory: ./provision-backend
         run: Terraform init
+
+      - name: terraform Plan
+        working-directory: ./provision-backend
+        run: terraform plan
+
         
-      - name: Terraform apply
+      - name: terraform apply
         working-directory: ./provision-backend
         run: terraform apply -auto-approve
 
